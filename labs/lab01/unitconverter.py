@@ -1,20 +1,23 @@
 def convert_units(value, unit):
-    conversions = {
-        "cm": ("in", value / 2.54),
-        "in": ("cm", value * 2.54),
-        "yd": ("m", value * 0.9144),
-        "m": ("yd", value / 0.9144),
-        "oz": ("g", value * 28.349523125),
-        "g": ("oz", value / 28.349523125),
-        "lb": ("kg", value * 0.45359237),
-        "kg": ("lb", value / 0.45359237)
-    }
-
-    if unit in conversions:
-        new_unit, converted_value = conversions[unit]
-        return f"{value} {unit} = {converted_value:.2f} {new_unit}"
-    else:
-        return "Invalid unit"
+    match unit:
+        case "cm":
+            return f"{value} cm = {value / 2.54:.2f} in"
+        case "in":
+            return f"{value} in = {value * 2.54:.2f} cm"
+        case "yd":
+            return f"{value} yd = {value * 0.9144:.2f} m"
+        case "m":
+            return f"{value} m = {value / 0.9144:.2f} yd"
+        case "oz":
+            return f"{value} oz = {value * 28.349523125:.2f} g"
+        case "g":
+            return f"{value} g = {value / 28.349523125:.2f} oz"
+        case "lb":
+            return f"{value} lb = {value * 0.45359237:.2f} kg"
+        case "kg":
+            return f"{value} kg = {value / 0.45359237:.2f} lb"
+        case _:
+            return "Invalid unit"
 
 def main():
     try:
