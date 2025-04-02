@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APOD - History</title>
+</head>
+<body>
+    <h1>NASA APOD - History</h1>
+
+    <form method="POST">
+        <label for="date">Select a date:</label>
+        <input type="date" id="date" name="date" required>
+        <button type="submit">Get APOD</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for msg in messages %}
+          <li style="color:red;">{{ msg }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% if apod %}
+        <h2>APOD for {{ selected_date }}</h2>
+        <img src="{{ apod.url }}" alt="APOD Image" style="max-width:100%;">
+        <p><strong>Title:</strong> {{ apod.title }}</p>
+        <p><strong>Description:</strong> {{ apod.explanation }}</p>
+        {% if apod.copyright %}
+            <p><strong>Copyright:</strong> {{ apod.copyright }}</p>
+        {% endif %}
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
