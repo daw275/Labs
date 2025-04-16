@@ -38,12 +38,12 @@ def _run_tests() -> None:
     assert zipmap([1, 2, 3], [4, 5, 6, 7, 8]) == {1: 4, 2: 5, 3: 6}
     assert zipmap([1, 3, 5, 7], [2, 4, 6]) == {1: 2, 3: 4, 5: 6, 7: None}
 
-    # Task 2 example
+    # Task 2 examples
     assert group_by(len, ["hi", "dog", "me", "bad", "good"]) == {2: ["hi", "me"], 3: ["dog", "bad"], 4: ["good"]}
 
-    # Task 3 quick check
+    # Task 3 examples
     assert my_filter(lambda x: x % 2 == 0, [1, 2, 3, 4, 5]) == [2, 4]
 
 if __name__ == "__main__":
     _run_tests()
-    print("All tests passed ✨")
+    print("All tests works")
